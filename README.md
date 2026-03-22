@@ -10,22 +10,22 @@ An **autonomous data analysis agent** powered by [Claude AI](https://www.anthrop
 User Prompt (CSV path + goal)
         │
         ▼
-┌───────────────────┐       stdio        ┌──────────────────────────┐
-│  Claude Agent     │ ◄─────────────────► │  MCP Data Analysis Server│
-│  (claude-opus-4-6)│    tool calls /     │  (server/server.py)      │
+┌───────────────────┐       stdio         ┌──────────────────────────┐
+│  Claude Agent     │ ◄─────────────────► │ MCP Data Analysis Server │
+│  (claude-opus-4-6)│    tool calls /     │   (server/server.py)     │
 │  agent/agent.py   │    tool results     │                          │
-└───────────────────┘                    │  Tools:                  │
-        │                                │  • load_dataset          │
-        │  Final markdown report         │  • get_dataset_info      │
-        ▼                                │  • get_summary_statistics│
-   report.md + charts/                   │  • analyze_missing_values│
-                                         │  • compute_correlations  │
-                                         │  • detect_outliers       │
-                                         │  • filter_data           │
-                                         │  • group_and_aggregate   │
-                                         │  • generate_visualization│
-                                         │  • save_report           │
-                                         └──────────────────────────┘
+└───────────────────┘                     │  Tools:                  │
+        │                                 │  • load_dataset          │
+        │  Final markdown report          │  • get_dataset_info      │
+        ▼                                 │  • get_summary_statistics│
+   report.md + charts/                    │  • analyze_missing_values│
+                                          │  • compute_correlations  │
+                                          │  • detect_outliers       │
+                                          │  • filter_data           │
+                                          │  • group_and_aggregate   │
+                                          │  • generate_visualization│
+                                          │  • save_report           │
+                                          └──────────────────────────┘
 ```
 
 Claude connects to the MCP server over **stdio transport**, calls the tools autonomously in the right order, reasons over the results, and writes a final markdown report to disk.
